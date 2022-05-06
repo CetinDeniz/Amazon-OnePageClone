@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.axuca.amazon.model.Product" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--            android:layout_height="256dp"-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="280dp"
+                android:background="#f8f8f8">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="128dp"
+                    android:padding="8dp"
+                    app:image="@{product.image}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/macbook" />
+
+<!--                app:bestSeller="@{product.bestSeller}"-->
+                <ImageView
+                    android:layout_width="124dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="-21dp"
+                    android:src="@drawable/amazon_choice"
+                    app:amazonChoice="@{product.choiceOfAmazon}"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="3"
+                android:text="@{product.title}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="2021 Apple MacBook Pro (14 inç, 8 çekirdekli CPU'ya ve 14 çekirdekli..." />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:progressTint="#FF9800"
+                    android:rating="@{product.rating}"
+                    tools:rating="4.5" />
+
+                <TextView
+                    android:id="@+id/review_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/amazon_ember_ligth"
+                    android:text="@{String.valueOf(product.reviewCount)}"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    tools:text="30" />
+            </LinearLayout>
+
+            <!--            android:text="@{product.price}"-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:spanText="@{product.price}"
+                tools:text="98.90 ₺" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/prime_cargo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_prime_medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:deliveryText="@{product.primeAvailable ? product.primeDeliveryDate : product.normalDeliveryDate}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="12sp"
+
+                    android:lineSpacingExtra="2dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/prime_cargo"
+                    tools:text="Ücretsiz bir günde Kargo BEDAVA: Yarın,27 nisan tarihinde teslim" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/amazon_ember_ligth"
+                android:textColor="#b14a30"
+                android:textSize="12sp"
+                app:stockText="@{product.stock}"
+                tools:text="Son 5 Ürün" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
